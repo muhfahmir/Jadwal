@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: db1_jadwal
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ptcc
+      MYSQL_DATABASE: jadwal
+      MYSQL_USER: ptcc
+      MYSQL_PASSWORD: ptcc
+    networks:
+      - app-network
+
+  db2:
+    image: mysql:8.0
+    restart: always
+    container_name: db2_users
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db2-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ptcc
+      MYSQL_DATABASE: jadwal_users
+      MYSQL_USER: ptcc
+      MYSQL_PASSWORD: ptcc
+    networks:
+      - app-network
+
+  app:
+    build: .
+    restart: always
+    depends_on:
+      - db
+      - db2
+    networks:
+      - app-network
+    ports:
+      - "8000:80"
+
+networks:
+  app-network:
+
+volumes:
+  db-volume:
+  db2-volume:

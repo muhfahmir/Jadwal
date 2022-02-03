@@ -1,3 +1,80 @@
+# Jadwal
+projek ini berkaitan denga menggunakan multi database dan docker. project ini merupakan tugas akhir dari mata kuliah praktikum Cloud computing
+
+## Requiremnts
+- Docker
+- mysql
+- codeigniter 3
+
+## How to use
+1. Download file projek ini atau melakukan clone dengan cara 
+``` 
+git clone https://github.com/muhfahmir/jadwal.git
+```
+2. membuat 2 database sesuai dengan yang anda inginkan
+3. settings nama database pada file confignya
+```
+application\config\database.php
+```
+jika dibuka file database.php, akan terlihat seperti berikut
+```
+$db['default'] = array(
+	'dsn'	=> '',
+	//'hostname' => 'localhost',
+	'hostname' => 'db1_jadwal',
+	'username' => 'root',
+	//'password' => '',
+	'password' => 'ptcc',
+	'database' => 'jadwal',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+	$db['jadwal_users'] = array(
+	'dsn'	=> '',
+	//'hostname' => 'localhost',
+	'hostname' => 'db2_users',
+	'username' => 'root',
+	//'password' => '',
+	'password' => 'ptcc',
+	'database' => 'jadwal_users',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+```
+4. melakukan import database dari file yang berada di folder db, sesuaikan dengan namanya.
+```
+jadwal.sql => untuk db jadwal
+jadwal_users => untuk db jadwal_users
+```
+5. setelah itu anda dapat membukanya di localhost tempat anda menyimpan projek ini
+
+
+
+
 ###################
 What is CodeIgniter
 ###################
